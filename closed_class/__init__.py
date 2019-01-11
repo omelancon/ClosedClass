@@ -63,7 +63,7 @@ class ClosedMeta(type):
 
     def __new__(cls, name, bases, namespace, exceptions=_default_dunder_exceptions):
         # A unique id for the class
-        uid = max(cls._register) + 1 if cls._register else 0
+        uid = max(cls._register, default=-1) + 1
         mro = get_mro(bases)
         exceptions = {*exceptions, *_base_dunder_exceptions}
 
